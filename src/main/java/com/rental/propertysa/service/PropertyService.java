@@ -10,6 +10,6 @@ public interface PropertyService {
     List<PropertyDto> findAll();
     PropertyDto findById(UUID id);
     List<PropertyDto> search(String type, int minPrice, int maxPrice, String street, String city, String state, String zipCode, Boolean onlyLocation);
-    PropertyDto update(PropertyDto propertyDto);
+    PropertyDto update(UUID id, PropertyDto propertyDto);
     PropertyDto delete(UUID id);
 }

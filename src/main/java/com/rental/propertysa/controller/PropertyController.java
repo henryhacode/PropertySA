@@ -34,17 +34,17 @@ public class PropertyController {
     public List<PropertyDto> search(@RequestParam(defaultValue = "HOUSE") String type,
                                     @RequestParam(defaultValue = "-1") int minPrice,
                                     @RequestParam(defaultValue = Integer.MAX_VALUE + "") int maxPrice,
-                                    @RequestParam(defaultValue = "%") String street,
-                                    @RequestParam(defaultValue = "%") String city,
-                                    @RequestParam(defaultValue = "%") String state,
-                                    @RequestParam(defaultValue = "%") String zipCode,
+                                    @RequestParam(defaultValue = "") String street,
+                                    @RequestParam(defaultValue = "") String city,
+                                    @RequestParam(defaultValue = "") String state,
+                                    @RequestParam(defaultValue = "") String zipCode,
                                     @RequestParam(defaultValue = "false") Boolean onlyLocation) {
         return propertyService.search(type, minPrice, maxPrice, street, city, state, zipCode, onlyLocation);
     }
 
-    @PutMapping
-    public PropertyDto update(PropertyDto propertyDto) {
-        return propertyService.update(propertyDto);
+    @PutMapping("/{id}")
+    public PropertyDto update(@PathVariable UUID id, @RequestBody PropertyDto propertyDto) {
+        return propertyService.update(id, propertyDto);
     }
 
     @DeleteMapping("/{id}")

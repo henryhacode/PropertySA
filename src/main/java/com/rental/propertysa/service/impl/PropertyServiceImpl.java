@@ -55,24 +55,7 @@ public class PropertyServiceImpl implements PropertyService {
             }
         }
 
-        // Location
-        String streetPattern = street;
-        if (!street.equals("%")) {
-            streetPattern = "%" + street + "%";
-        }
-
-        String cityPattern = city;
-        if (!city.equals("%")) {
-            cityPattern = "%" + city + "%";
-        }
-
-        String zipCodePattern = zipCode;
-        if (!zipCode.equals("%")) {
-            zipCodePattern = "%" + zipCode + "%";
-        }
-
         List<Property> properties;
-//        properties = (List<Property>) propertyRepository.findAll();
         if (!onlyLocation) {
             properties = propertyRepository.findByTypeAndPricePerNightGreaterThanEqualAndPricePerNightLessThanEqualAndAddressStreetEqualsIgnoreCaseAndAddressCityEqualsIgnoreCaseAndAddressZipCodeEqualsIgnoreCase(
                     propType, minPrice, maxPrice, street, city, zipCode
@@ -87,7 +70,8 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    public PropertyDto update(PropertyDto propertyDto) {
+    public PropertyDto update(UUID id, PropertyDto propertyDto) {
+        propertyDto.setId(id);
         return propertyMapper.toDto(propertyRepository.save(propertyMapper.toEntity(propertyDto)));
     }
 

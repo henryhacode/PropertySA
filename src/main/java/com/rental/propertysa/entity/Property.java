@@ -24,6 +24,7 @@ public class Property {
     @PrimaryKeyColumn(ordinal = 1, type = PrimaryKeyType.PARTITIONED)
     private PropertyType type;
 
+    private boolean available;
     private double pricePerNight;
     private String description;
 
