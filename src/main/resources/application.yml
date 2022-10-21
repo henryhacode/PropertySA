@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: property-service
+#
+#  sql:
+#    init:
+#      mode: always
+#
+
+  main:
+    allow-bean-definition-overriding: true
+
+  data:
+    cassandra:
+#      contact-points: 127.0.0.1
+      keyspace-name: property_ks
+#      port: 9042
+      schema-action: create_if_not_exists
+      local-datacenter: datacenter1
+
+
+server:
+  port: 8080

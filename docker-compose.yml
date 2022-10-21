@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  property-db:
+    image: cassandra:4.0
+    container_name: property-db
+    restart: always
+    environment:
+      - M:1
+    ports:
+      - "9042:9042"
+      - "9160:9160"
+    networks:
+      - property-network
+    volumes:
+      - property-vol:/var/lib/cassandra
+
+volumes:
+  property-vol:
+    driver: local
+
+networks:
+  property-network:
+    driver: bridge
