@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
 import org.springframework.data.cassandra.core.mapping.*;
 
+import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
 
@@ -13,7 +14,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 @Table
-public class Property {
+public class Property implements Serializable {
     //    @PrimaryKey
 //    @PrimaryKeyColumn(ordinal = 1, type = PrimaryKeyType.PARTITIONED)
     private UUID id;

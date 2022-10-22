@@ -15,6 +15,13 @@ services:
     volumes:
       - property-vol:/var/lib/cassandra
 
+  redis:
+    image: redis:latest
+    networks:
+      - property-network
+    ports:
+      - "6379:6379"
+
   zookeeper:
     image: confluentinc/cp-zookeeper:7.0.1
     container_name: zookeeper

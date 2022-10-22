@@ -4,6 +4,7 @@ import com.rental.propertysa.entity.Address;
 import com.rental.propertysa.entity.PropertyType;
 import lombok.*;
 
+import java.io.Serializable;
 import java.util.Set;
 import java.util.UUID;
 
@@ -12,7 +13,7 @@ import java.util.UUID;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class PropertyDto {
+public class PropertyDto implements Serializable {
     private UUID id;
     private String owner;
     private PropertyType type;
