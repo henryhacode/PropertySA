@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: property-deployment
+  labels:
+    app: property
+spec:
+  replicas: 2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 50%
+  selector:
+    matchLabels:
+      app: property
+  template:
+    metadata:
+      labels:
+        app: property
+    spec:
+      containers:
+        - name: property-service
+          image: property-sa:0.1
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - name: http
+              containerPort: 8080
+          envFrom:
+            - configMapRef:
+                name: property-config
