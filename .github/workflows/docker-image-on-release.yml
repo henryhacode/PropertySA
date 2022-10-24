@@ -13,6 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Print
-      run: echo ${GITHUB_REF#refs/*/}
+      run: echo ${GITHUB_REF#refs/*/} ${<tag_name>} ${GITHUB+REF#refs/tag/<tag_name>}
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag property-sa:${GITHUB_REF#refs/tag/<tag_name>}
+      run: docker build . --file Dockerfile --tag property-sa:${GITHUB_REF#refs/*/}
