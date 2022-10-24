@@ -1,0 +1,18 @@
+name: Build Docker on Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Print
+      run: echo ${GITHUB_REF#refs/*/}
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag property-sa:${GITHUB_REF#refs/tag/<tag_name>}
