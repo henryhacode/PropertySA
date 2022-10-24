@@ -24,7 +24,7 @@ jobs:
       run: ./gradlew bootJar
       
     - name: Print
-      run: echo ${GITHUB_REF#refs/*/}  ${GITHUB+REF#refs/tag/<tag_name>}
+      run: echo ${GITHUB_REF#refs/*/}
       
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag property-sa:${GITHUB_REF#refs/*/}
@@ -38,6 +38,12 @@ jobs:
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
       run: |
         docker login -u $DOCKER_USER_NAME -p $DOCKER_PASSWORD
+        
+    - name: List of docker images
+      run: docker images
+      
+    - name: Print 2
+      run: echo ${{secrets.DOCKER_USER_NAME}}/property-sa:${GITHUB_REF#refs/*/}
       
     - name: Push to Docker Hub
-      run: docker push $${secrets.DOCKER_USER_NAME}}/property-sa:${GITHUB_REF#refs/*/}
+      run: docker push ${{secrets.DOCKER_USER_NAME}}/property-sa:${GITHUB_REF#refs/*/}
