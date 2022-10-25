@@ -34,6 +34,10 @@ spring:
 
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER}
 
+  zipkin:
+    sender:
+      type: kafka
+
 
 kafka:
   reservationTopic: ${PROPERTY_REQUEST_TOPIC}
