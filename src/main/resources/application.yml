@@ -3,15 +3,15 @@ spring:
     name: property-service
 
   main:
-    allow-bean-definition-overriding: true
+    allow-bean-definition-overriding: ${SPRING_ALLOW_BEAN_DEFINITION_OVERRIDING}
 
   data:
     cassandra:
-#      contact-points: 127.0.0.1
-      keyspace-name: ${DB_KEYSPACE_NAME}
-#      port: 9042
-      schema-action: create_if_not_exists
-      local-datacenter: ${DB_DATA_CENTER}
+      contact-points: ${DB_CONTACT_POINTS}
+      keyspace-name: ${DB_PROPERTY_KEYSPACE}
+      port: ${DB_PORT}
+      schema-action: ${DB_SCHEME_ACTION}
+      local-datacenter: ${DB_DATACENTER}
 
   cache:
     type: redis
@@ -36,7 +36,7 @@ spring:
 
 
 kafka:
-  reservationTopic: ${KAFKA_RESERVATION_TOPIC}
+  reservationTopic: ${PROPERTY_REQUEST_TOPIC}
 
 server:
   port: ${SERVICE_PORT}
