@@ -9,8 +9,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
+import java.util.Collections;
 
 @EnableGlobalMethodSecurity(
         prePostEnabled = true,
@@ -49,6 +52,11 @@ public class SecurityConfiguration {
         JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
         jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(new MyConverter());
         return jwtAuthenticationConverter;
+    }
+
+    @Bean
+    public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
+        return new InMemoryUserDetailsManager(Collections.EMPTY_LIST);
     }
 
 }

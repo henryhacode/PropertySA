@@ -45,5 +45,8 @@ spring:
 kafka:
   reservationTopic: ${PROPERTY_REQUEST_TOPIC}
 
+jwt:
+  secret: ${JWT_SECRET}
+
 server:
   port: ${SERVICE_PORT}

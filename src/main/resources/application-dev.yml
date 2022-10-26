@@ -25,8 +25,8 @@ spring:
     consumer:
       value-deserializer: "org.springframework.kafka.support.serializer.JsonDeserializer"
       properties:
-        "[spring.json.value.default.type]": "com.rental.propertysa.entity.Property"
-        "[spring.json.trusted.packages]": "com.rental.propertysa.entity"
+        "[spring.json.value.default.type]": "com.rental.propertysa.kafka.ReservationChange"
+        "[spring.json.trusted.packages]": "com.rental.propertysa"
 
     producer:
       value-serializer: "org.springframework.kafka.support.serializer.JsonSerializer"
@@ -41,7 +41,10 @@ spring:
       name: "property-service"
 
 kafka:
-  reservationTopic: "RESERVATION_TOPIC"
+  reservationTopic: "ReservationDoneEvent"
+
+jwt:
+  secret: "top_secret"
 
 server:
   port: 8080

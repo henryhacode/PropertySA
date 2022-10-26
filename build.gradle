@@ -43,6 +43,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 	implementation 'org.springframework.cloud:spring-cloud-starter-sleuth:3.1.4'
 	implementation 'org.springframework.cloud:spring-cloud-sleuth-zipkin:3.1.4'
+	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'javax.xml.bind:jaxb-api:2.3.0'
 	testCompileOnly 'org.projectlombok:lombok'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
