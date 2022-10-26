@@ -37,8 +37,7 @@ spring:
     bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER}
 
   zipkin:
-    sender:
-      type: kafka
+    baseUrl: ${ZIPKIN_SERVER}
 
 
 kafka:
