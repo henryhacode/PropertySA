@@ -18,10 +18,17 @@ public class Listener {
         log.info("Consumer received msg " + msg);
         if (msg == null) return;
 
-        Property property = propertyRepository.findById(msg.getPropertyId()).orElse(null);
-        if (property != null) {
-            property.setAvailable(true);
-            propertyRepository.save(property);
+        try {
+            Property property = propertyRepository.findById(msg.getPropertyId()).orElse(null);
+            if (property != null) {
+                log.info(property.toString());
+                property.setAvailable(true);
+                propertyRepository.save(property);
+            } else {
+                log.info("Kafka message processing: cannot find property id");
+            }
+        } catch (Exception ex) {
+            log.info("Kafka message processing error: " + ex);
         }
     }
 }
