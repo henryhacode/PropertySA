@@ -26,7 +26,10 @@ public class Property implements Serializable {
     private PropertyType type;
 
     private boolean available;
+
+    @PrimaryKeyColumn(ordinal = 2, type = PrimaryKeyType.PARTITIONED)
     private double pricePerNight;
+
     private String description;
 
     @Embedded(onEmpty = Embedded.OnEmpty.USE_EMPTY)
