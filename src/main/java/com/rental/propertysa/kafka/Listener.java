@@ -11,7 +11,7 @@ import org.springframework.kafka.annotation.KafkaListener;
 public class Listener {
     private final PropertyRepository propertyRepository;
 
-    @KafkaListener(id = "reservation-listener", topics = "${kafka.reservationTopic}")
+    @KafkaListener(id = "reservation-listener", topics = "ReservationDoneEvent")
     public void listen(ReservationChange msg) {
         log.info("Consumer received msg " + msg);
         if (msg == null) return;
