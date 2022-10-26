@@ -32,10 +32,7 @@ jobs:
       run: echo ${GITHUB_REF#refs/*/}
       
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag property-sa:${GITHUB_REF#refs/*/}
-      
-    - name: Tag image
-      run: docker tag property-sa:${GITHUB_REF#refs/*/} ${{secrets.DOCKER_USER_NAME}}/property-sa:${GITHUB_REF#refs/*/}
+      run: docker build . --file Dockerfile --tag ${{secrets.DOCKER_USER_NAME}}/property-sa:${GITHUB_REF#refs/*/}
       
     - name: Docker Login
       env:
@@ -46,9 +43,6 @@ jobs:
         
     - name: List of docker images
       run: docker images
-      
-    - name: Print 2
-      run: echo ${{secrets.DOCKER_USER_NAME}}/property-sa:${GITHUB_REF#refs/*/}
       
     - name: Push to Docker Hub
       run: docker push ${{secrets.DOCKER_USER_NAME}}/property-sa:${GITHUB_REF#refs/*/}
