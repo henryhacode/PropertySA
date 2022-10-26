@@ -35,6 +35,10 @@ spring:
 
     bootstrap-servers: "localhost:9092"
 
+  zipkin:
+    baseUrl: localhost:9012
+    service:
+      name: "property-service"
 
 kafka:
   reservationTopic: "RESERVATION_TOPIC"
