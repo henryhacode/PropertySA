@@ -12,6 +12,8 @@ spring:
       port: ${DB_PORT}
       schema-action: ${DB_SCHEME_ACTION}
       local-datacenter: ${DB_DATACENTER}
+      request:
+        timeout: ${DB_REQUEST_TIMEOUT}
 
   cache:
     type: redis
