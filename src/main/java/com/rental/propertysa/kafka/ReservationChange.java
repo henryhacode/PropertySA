@@ -10,6 +10,9 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ReservationChange {
-    private String status; // DONE, FAIL
+    private String paymentType;
+    private String email;
+    private double total;
+    private int night;
     private UUID propertyId;
 }

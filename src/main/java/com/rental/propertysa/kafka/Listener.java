@@ -18,8 +18,7 @@ public class Listener {
 
         Property property = propertyRepository.findById(msg.getPropertyId()).orElse(null);
         if (property != null) {
-            boolean available = !msg.getStatus().equals("DONE");
-            property.setAvailable(available);
+            property.setAvailable(true);
             propertyRepository.save(property);
         }
     }
