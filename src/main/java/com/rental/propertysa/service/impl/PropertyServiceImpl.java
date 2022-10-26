@@ -7,7 +7,6 @@ import com.rental.propertysa.mapper.PropertyMapper;
 import com.rental.propertysa.repository.PropertyRepository;
 import com.rental.propertysa.service.PropertyService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +18,7 @@ public class PropertyServiceImpl implements PropertyService {
     private final PropertyRepository propertyRepository;
     private final PropertyMapper propertyMapper;
 
-    @PreAuthorize("hasRole('ROLE_OWNER') or hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_OWNER') or hasRole('ROLE_ADMIN')")
     @Override
     public PropertyDto save(PropertyDto propertyDto) {
         if (propertyDto.getId() == null) {
@@ -84,14 +83,14 @@ public class PropertyServiceImpl implements PropertyService {
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_OWNER') or hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_OWNER') or hasRole('ROLE_ADMIN')")
     public PropertyDto update(UUID id, PropertyDto propertyDto) {
         propertyDto.setId(id);
         return propertyMapper.toDto(propertyRepository.save(propertyMapper.toEntity(propertyDto)));
     }
 
     @Override
-    @PreAuthorize("hasRole('ROLE_OWNER') or hasRole('ROLE_ADMIN')")
+//    @PreAuthorize("hasRole('ROLE_OWNER') or hasRole('ROLE_ADMIN')")
     public PropertyDto delete(UUID id) {
         PropertyDto propertyDto = propertyRepository.findById(id).map(propertyMapper::toDto).orElse(null);
         propertyRepository.deleteById(id);
