@@ -83,8 +83,8 @@ public class PropertyServiceTest {
                 100.0, "Very good house", address, null);
         PropertyDto propertyDto = new PropertyDto(propertyId, "henry@gmail.com", PropertyType.HOUSE, true,
                 100.0, "Very good house", address, null);
-        Mockito.when(propertyRepository.findByTypeAndAddressStreetEqualsIgnoreCaseAndAddressCityEqualsIgnoreCaseAndAddressStateEqualsIgnoreCaseAndAddressZipCodeEqualsIgnoreCase(
-                any(), anyString(), anyString(), anyString(), anyString()
+        Mockito.when(propertyRepository.findByTypeAndAddressStreetEqualsIgnoreCaseAndAddressCityEqualsIgnoreCaseAndAddressStateEqualsIgnoreCase(
+                any(), anyString(), anyString(), anyString()
         )).thenReturn(List.of(property));
         Mockito.when(propertyMapper.toDtoList(any())).thenReturn(List.of(propertyDto));
         List<PropertyDto> returnedProperties = propertyService.search("HOUSE", 1, 1000, "10 1 st", "FairField", "Iowa",

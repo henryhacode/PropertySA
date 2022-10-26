@@ -21,5 +21,10 @@ public interface PropertyRepository extends CassandraRepository<Property, UUID> 
     );
 
     List<Property> findByType(PropertyType type);
+    List<Property> findByTypeAndAddressStreetEqualsIgnoreCase(PropertyType type, String street);
     List<Property> findByTypeAndAddressCityEqualsIgnoreCase(PropertyType type, String city);
+    List<Property> findByTypeAndAddressStateEqualsIgnoreCase(PropertyType type, String state);
+    List<Property> findByTypeAndAddressStreetEqualsIgnoreCaseAndAddressCityEqualsIgnoreCaseAndAddressStateEqualsIgnoreCase(
+            PropertyType type, String address_street, String address_city, String address_state
+    );
 }

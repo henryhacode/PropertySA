@@ -63,9 +63,21 @@ public class PropertyServiceImpl implements PropertyService {
                     propType, minPrice, maxPrice, street, city, zipCode
             );
         } else {
-            properties = propertyRepository.findByTypeAndAddressStreetEqualsIgnoreCaseAndAddressCityEqualsIgnoreCaseAndAddressStateEqualsIgnoreCaseAndAddressZipCodeEqualsIgnoreCase(
-                    propType, street, city, state, zipCode
-            );
+            if (street.length() != 0 && city.length() != 0 && state.length() != 0) {
+                properties = propertyRepository.findByTypeAndAddressStreetEqualsIgnoreCaseAndAddressCityEqualsIgnoreCaseAndAddressStateEqualsIgnoreCase(
+                        propType, street, city, state);
+            } else if (street.length() != 0) {
+                properties = propertyRepository.findByTypeAndAddressStreetEqualsIgnoreCase(propType, street);
+            } else if (city.length() != 0) {
+                properties = propertyRepository.findByTypeAndAddressCityEqualsIgnoreCase(propType, city);
+            } else if (state.length() != 0) {
+                properties = propertyRepository.findByTypeAndAddressStateEqualsIgnoreCase(propType, state);
+            } else {
+                properties = propertyRepository.findByType(propType);
+            }
+//            properties = propertyRepository.findByTypeAndAddressStreetEqualsIgnoreCaseAndAddressCityEqualsIgnoreCaseAndAddressStateEqualsIgnoreCaseAndAddressZipCodeEqualsIgnoreCase(
+//                    propType, street, city, state, zipCode
+//            );
         }
 
         return propertyMapper.toDtoList(properties);
