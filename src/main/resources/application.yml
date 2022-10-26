@@ -38,6 +38,8 @@ spring:
 
   zipkin:
     baseUrl: ${ZIPKIN_SERVER}
+    service:
+      name: ${ZIPKIN_PROPERTY_SERVICE}
 
 
 kafka:
