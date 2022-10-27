@@ -2,7 +2,6 @@ package com.rental.propertysa.entity;
 
 import lombok.*;
 import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
-import org.springframework.data.cassandra.core.mapping.PrimaryKeyClass;
 import org.springframework.data.cassandra.core.mapping.PrimaryKeyColumn;
 
 import java.io.Serializable;
@@ -12,7 +11,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@PrimaryKeyClass
+//@PrimaryKeyClass
 public class Address implements Serializable {
     @PrimaryKeyColumn(ordinal = 3, type = PrimaryKeyType.PARTITIONED)
     private String street;

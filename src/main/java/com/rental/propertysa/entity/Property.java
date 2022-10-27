@@ -1,8 +1,10 @@
 package com.rental.propertysa.entity;
 
 import lombok.*;
-import org.springframework.data.cassandra.core.cql.PrimaryKeyType;
-import org.springframework.data.cassandra.core.mapping.*;
+import org.springframework.data.cassandra.core.mapping.Column;
+import org.springframework.data.cassandra.core.mapping.Embedded;
+import org.springframework.data.cassandra.core.mapping.PrimaryKey;
+import org.springframework.data.cassandra.core.mapping.Table;
 
 import java.io.Serializable;
 import java.util.Set;
@@ -15,19 +17,19 @@ import java.util.UUID;
 @ToString
 @Table
 public class Property implements Serializable {
-    //    @PrimaryKey
+        @PrimaryKey
 //    @PrimaryKeyColumn(ordinal = 1, type = PrimaryKeyType.PARTITIONED)
     private UUID id;
 
     private String owner; // email
 
     //    @Indexed
-    @PrimaryKeyColumn(ordinal = 1, type = PrimaryKeyType.PARTITIONED)
+//    @PrimaryKeyColumn(ordinal = 1, type = PrimaryKeyType.PARTITIONED)
     private PropertyType type;
 
     private boolean available;
 
-    @PrimaryKeyColumn(ordinal = 2, type = PrimaryKeyType.PARTITIONED)
+//    @PrimaryKeyColumn(ordinal = 2, type = PrimaryKeyType.PARTITIONED)
     private double pricePerNight;
 
     private String description;
@@ -36,7 +38,7 @@ public class Property implements Serializable {
 //    @Indexed
 //    @SASI(indexMode = SASI.IndexMode.CONTAINS)
 //    @SASI.StandardAnalyzed
-    @PrimaryKeyColumn(type = PrimaryKeyType.PARTITIONED)
+//    @PrimaryKeyColumn(type = PrimaryKeyType.PARTITIONED)
     private Address address;
 
     @Column
