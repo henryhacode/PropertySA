@@ -33,8 +33,8 @@ public class Listener implements CommandLineRunner {
     @KafkaListener(id = "reservation-listener", topics = "${kafka.reservationTopic}")
     public void listen(ReservationChange msg) {
         log.info("Consumer received msg " + msg);
-        log.info(redisHost + redisPort + redisPwd);
-        log.info(secret);
+//        log.info(redisHost + redisPort + redisPwd);
+//        log.info(secret);
         if (msg == null) return;
 
         try {
