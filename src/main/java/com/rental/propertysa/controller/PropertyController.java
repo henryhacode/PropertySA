@@ -28,7 +28,7 @@ public class PropertyController {
     @Cacheable(value = "properties", key = "#id")
     @GetMapping("/{id}")
     public PropertyDto findById(@PathVariable UUID id) {
-        log.info("Call service to find id {}", id);
+        log.info("Call service to find id {}.", id);
         return propertyService.findById(id);
     }
 
